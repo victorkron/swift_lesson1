@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import UIKit
+
+// Задание 1: Решить квадратное уравнение
+
+/*   Функция solver принимает на вход коэффициенты квадратного уравнения и  возвращает массив типа String с корнями 
+ */
+func solver(a: Double, b: Double, c: Double) -&gt; [String] {
+    var x1: String
+    var x2: String
+    var D: Double = pow(b,2) - 4*a*c
+    
+    if (D &gt; 0) {
+        x1 = String((-b+sqrt(D)) / (2*a))
+        x2 = String((-b-sqrt(D)) / (2*a))
+    } else if (D == 0) {  // Присваиваем значения двум корням, т.к. с точки зрения матанализа их действительно два, просто они равны
+        x1 = String((-b) / (2*a)) 
+        x2 = x1
+    } else {
+        x1 = String((-b) / (2*a)) + " + " + "i" + String((sqrt(abs(D))) / (2*a)) 
+        x2 = String((-b) / (2*a)) + " - " + "i" + String((sqrt(abs(D))) / (2*a))
+    }
+    
+    return [x1, x2]
+}
+
+var aa: Double = 1
+var bb: Double = 2
+var cc: Double = 7
+
+var arr: [String] = solver(a: aa, b: bb, c: cc) 
+print("Задание №1\n------------------------------")
+print("Корни уравнения: \n\tx1 = \(arr[0])\n\tx2 = \(arr[1])")
+print("------------------------------\n\n\n")
+
+
+
+// Задание 2: Даны катеты прямоугольного треугольника. Найти площадь, периметр и гипотенузу треугольника.
+
+func squareOf(a: Double, b: Double) -&gt; Double {
+    var S: Double
+    S = a*b/2
+    return S
+}
+
+func hypotenuseOf(a: Double, b: Double) -&gt; Double {
+    var c: Double
+    c = sqrt(pow(a,2) + pow(b,2))
+    return c
+}
+
+func perimeterOf(a: Double, b: Double) -&gt; Double {
+    var p: Double
+    p = a + b + hypotenuseOf(a: a, b: b)
+    return p
+}
+
+var a: Double = 3
+var b: Double = 4
+
+var square: Double = squareOf(a: a, b: b)
+var hypotenuse: Double = hypotenuseOf(a: a, b: b)
+var perimeter: Double = perimeterOf(a: a, b: b)
+
+var result: Dictionary&lt;String, Double&gt; = ["S": square, "c": hypotenuse, "P": perimeter ]
+
+print("Задание №2\n------------------------------")
+print("\tГипотенуза: \(result["c"]!)\n\tПериметр: \(result["P"]!)\n\tПлощадь: \(result["S"]!)")
+print("------------------------------\n\n\n")
+
+
+// Задание 3: Пользователь вводит сумму вклада в банк и годовой процент. Найти сумму вклада через 5 лет.
+let years: Int = 5
+var counter: Int = 0
+
+func calculationOfDeposit(deposit: Double, percent: UInt) -&gt; Double {
+    var result: Double
+    if (counter == years) {
+        return deposit
+    } else {
+        counter += 1
+        var newDeposit = deposit * (1.0 + Double(percent)/100.0)
+        result = calculationOfDeposit(deposit: newDeposit, percent: percent)
+    }
+    return result
+}
+
+var deposit: Double = 10e+5
+var percent: UInt = 7
+var output: Double = calculationOfDeposit(deposit: deposit, percent: percent)
+
+print("Задание №3\n------------------------------")
+print("Вклад \(deposit) под \(percent)% через \(years) лет будет равен:\n\t\(output)")
+print("------------------------------\n\n\n")
+
+
+
+
+
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 2812}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
